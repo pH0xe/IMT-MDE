@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="imtmde" nsURI="http://www.example.org/imtmde" nsPrefix="imtmde">
+  <eClassifiers xsi:type="ecore:EClass" name="Adresse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adressePostal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="codePostal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ville" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Competition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="club" upperBound="-1" eType="#//Club"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adresse" upperBound="-1"
+        eType="#//Adresse" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="match" upperBound="-1"
+        eType="#//Match" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Club">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tireur" upperBound="-1"
+        eType="#//Tireur" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adresse" upperBound="-1"
+        eType="#//Adresse" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Match">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arme" eType="#//TypeArme"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sexe" eType="#//TypeSexe"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="categorie" eType="#//TypeCategorie"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultat" eType="#//Resultat"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tireurs" lowerBound="2"
+        upperBound="2" eType="#//Tireur" eOpposite="#//Tireur/match"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resultat">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="temps" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tireur" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prenom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="categorie" eType="#//TypeCategorie"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sexe" eType="#//TypeSexe"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="match" upperBound="-1"
+        eType="#//Match" eOpposite="#//Match/tireurs"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Fleurettiste" eSuperTypes="#//Tireur"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Epeiste" eSuperTypes="#//Tireur"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sabreur" eSuperTypes="#//Tireur"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeArme">
+    <eLiterals name="FLEURET"/>
+    <eLiterals name="EPEE" value="1"/>
+    <eLiterals name="SABRE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeSexe">
+    <eLiterals name="FEMME"/>
+    <eLiterals name="HOMME" value="1"/>
+    <eLiterals name="MIXTE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeCategorie">
+    <eLiterals name="M15"/>
+    <eLiterals name="M20" value="1"/>
+    <eLiterals name="SENIOR" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

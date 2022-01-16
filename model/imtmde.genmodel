@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/IMT-MDE/src-gen" creationIcons="false" editDirectory="/IMT-MDE.edit/src-gen"
+    editorDirectory="/IMT-MDE.editor/src-gen" modelPluginID="IMT-MDE" modelName="Imtmde"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>imtmde.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Imtmde" basePackage="imt-mde" disposableProviderFactory="true"
+      ecorePackage="imtmde.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="imtmde.ecore#//TypeArme">
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeArme/FLEURET"/>
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeArme/EPEE"/>
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeArme/SABRE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="imtmde.ecore#//TypeSexe">
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeSexe/FEMME"/>
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeSexe/HOMME"/>
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeSexe/MIXTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="imtmde.ecore#//TypeCategorie">
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeCategorie/M15"/>
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeCategorie/M20"/>
+      <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeCategorie/SENIOR"/>
+    </genEnums>
+    <genClasses ecoreClass="imtmde.ecore#//Adresse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/adressePostal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/codePostal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/ville"/>
+    </genClasses>
+    <genClasses ecoreClass="imtmde.ecore#//Competition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Competition/nom"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imtmde.ecore#//Competition/club"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imtmde.ecore#//Competition/adresse"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imtmde.ecore#//Competition/match"/>
+    </genClasses>
+    <genClasses ecoreClass="imtmde.ecore#//Club">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Club/nom"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imtmde.ecore#//Club/tireur"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imtmde.ecore#//Club/adresse"/>
+    </genClasses>
+    <genClasses ecoreClass="imtmde.ecore#//Match">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Match/arme"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Match/sexe"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Match/categorie"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference imtmde.ecore#//Match/resultat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference imtmde.ecore#//Match/tireurs"/>
+    </genClasses>
+    <genClasses ecoreClass="imtmde.ecore#//Resultat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Resultat/score"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Resultat/temps"/>
+    </genClasses>
+    <genClasses ecoreClass="imtmde.ecore#//Tireur">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Tireur/nom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Tireur/prenom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Tireur/categorie"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Tireur/sexe"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference imtmde.ecore#//Tireur/match"/>
+    </genClasses>
+    <genClasses ecoreClass="imtmde.ecore#//Fleurettiste"/>
+    <genClasses ecoreClass="imtmde.ecore#//Epeiste"/>
+    <genClasses ecoreClass="imtmde.ecore#//Sabreur"/>
+  </genPackages>
+</genmodel:GenModel>
