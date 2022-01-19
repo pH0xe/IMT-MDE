@@ -1,7 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: IMT-MDE
-Bundle-SymbolicName: IMT-MDE; singleton:=true
+Bundle-Name: %pluginName
+Bundle-SymbolicName: IMT-MDE;singleton:=true
+Automatic-Module-Name: IMT-MDE
 Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: imt.imtmde,
+ imt.imtmde.impl,
+ imt.imtmde.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.16.0"
+Bundle-ActivationPolicy: lazy

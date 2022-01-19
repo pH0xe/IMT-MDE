@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:imtmde="http://www.example.org/imtmde">
+  <imtmde:Competition nom="tournois ">
+    <adresse adressePostale="50 avenue VH" codePostal="38000" ville="Grenoble"/>
+  </imtmde:Competition>
+  <imtmde:Competition nom="Tournois des rois">
+    <adresse adressePostale="32 rue marees" codePostal="38430" ville="Moirans"/>
+  </imtmde:Competition>
+  <imtmde:Competition nom="ds">
+    <adresse adressePostale="qs" codePostal="45" ville="df"/>
+  </imtmde:Competition>
+</xmi:XMI>
