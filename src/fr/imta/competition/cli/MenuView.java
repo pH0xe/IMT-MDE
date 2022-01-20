@@ -11,14 +11,16 @@ import imt.imtmde.Tireur;
 
 public class MenuView {
 	public static void printMain(EList<Competition> competitions) {
-		Ansi.printTitle("Choisir la compÈtition");
+		Ansi.printTitle("Choisir la comp√©tition");
 		
 		int i = 0;
 		Ansi.printDefault("0) Quitter");
-		Ansi.printDefault("1) CrÈer une compÈtition");
+		Ansi.printDefault("1) Cr√©er une comp√©tition");
 		
-		for (i = 0; i < competitions.size(); i++) {
-			Ansi.printDefault((i+2) + ") " + competitions.get(i).getNom());
+		if (competitions != null) {
+			for (i = 0; i < competitions.size(); i++) {
+				Ansi.printDefault((i+2) + ") " + competitions.get(i).getNom());
+			}
 		}
 	}
 	
@@ -35,7 +37,7 @@ public class MenuView {
 		Ansi.printTitle("Matchs");
 		
 		Ansi.printDefault("0) Retours");
-		Ansi.printDefault("1) CrÈer un match");
+		Ansi.printDefault("1) Cr√©er un match");
 		
 		for(int i = 0; i < matchs.size(); i++) {
 			Ansi.printDefault((i+2) + ") " + matchs.get(i).getTireurs().get(0).getNom() + " - " + matchs.get(i).getTireurs().get(1).getNom());
@@ -46,15 +48,38 @@ public class MenuView {
 		EList<Tireur> tireurs = match.getTireurs();
 		Ansi.printTitle(formatterNomTireur(tireurs.get(0)) + " - " + formatterNomTireur(tireurs.get(1)));
 		Ansi.printInfo("Arme : " + match.getArme());
-		Ansi.printInfo("CatÈgorie : " + match.getCategorie());
+		Ansi.printInfo("Cat√©gorie : " + match.getCategorie());
 		Ansi.printInfo("Sexe : " + match.getSexe());
 		Ansi.printInfo("Resultat : " + formatterResultat(match.getResultat()));
 		
 		Ansi.printDefault("0) Retours");
 		Ansi.printDefault("1) " + formatterNomTireur(tireurs.get(0)));
 		Ansi.printDefault("2) " + formatterNomTireur(tireurs.get(1)));
-		Ansi.printDefault("3) Inscrire le score");
+		Ansi.printDefault("3) Inscrire/Modifier le score");
 	}
+	
+	public static void printScore(Match match) {
+		Ansi.printTitle("Mise a jour des scores");
+		Ansi.printInfo("Score : " + match.getResultat().getScore());
+		Ansi.printInfo("Temps : " + match.getResultat().getTemps());
+	}
+	
+	public static void printTireurInfo(Tireur tireur) {
+		Ansi.printTitle(tireur.getPrenom() + " " + tireur.getNom());
+
+		Ansi.printInfo("Arme : " + tireur.getClass());
+		Ansi.printInfo("Cat√©gorie : " + tireur.getCategorie());
+		Ansi.printInfo("Sexe : " + tireur.getSexe());
+	}
+	
+	public static void printTireurMenu(Tireur tireur) {
+		printTireurInfo(tireur);
+		
+		Ansi.printDefault("0) Retours");
+		Ansi.printDefault("1) Afficher les matchs");
+		Ansi.printDefault("2) Modifier Tireur");
+	}
+	
 	
 	private static String formatterAdresse(Adresse adresse) {
 		return adresse.getAdressePostale() + ", " + adresse.getCodePostal() + ", " + adresse.getVille();
@@ -65,7 +90,8 @@ public class MenuView {
 	}
 	
 	private static String formatterResultat(Resultat resultat) {
-		if (resultat == null) return "Scores non indiquÈ";
+		if (resultat == null) return "Scores non indiqu√©";
 		return resultat.getScore();
 	}
+	
 }

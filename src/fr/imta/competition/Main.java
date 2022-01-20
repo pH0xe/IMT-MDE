@@ -14,7 +14,7 @@ public class Main {
 		ResourceUtils resource = new ResourceUtils();
 		if (args.length == 0) {
 			String path = "./xmi/" + getDateFormatted(new Date()) + ".xmi";
-			Ansi.printYellow("Création de : " + path);
+			Ansi.printYellow("CrÃ©ation de : " + path);
 			resource.creerRessource(path);
 		} else {
 			Ansi.printYellow("Chargement de : " + args[0]);
@@ -30,7 +30,7 @@ public class Main {
 		
 		try {
 			resource.sauvegarderResource();
-			Ansi.printGreen("Modele sauvegardé avec succès");
+			Ansi.printGreen("Modele sauvegardï¿½ avec succï¿½s");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
