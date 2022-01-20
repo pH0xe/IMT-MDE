@@ -50,4 +50,8 @@ public class Ansi {
 	public static void printInfo(String text) {
 		printCyan(text);
 	}
+
+	public static void printDebug(String text) {
+		printYellow(text);
+	}
 }

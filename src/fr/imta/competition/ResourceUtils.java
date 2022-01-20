@@ -53,7 +53,7 @@ public class ResourceUtils {
 	
 	public void ajoutCompetion(Competition competition) {
 		resource.getContents().add(competition);
-		this.competitions.add(competition);
+		this.competitions = (EList<Competition>)(Object) resource.getContents();
 	}
 	
 	public EList<Competition> getCompetions() {

@@ -1,13 +1,11 @@
 package fr.imta.competition.cli;
 
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;import org.eclipse.core.internal.registry.osgi.RegistryCommandProvider;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
 
 import fr.imta.competition.ResourceUtils;
 import fr.imta.competition.utils.Ansi;
+import fr.imta.competition.utils.Getters;
 import fr.imta.competition.utils.InputUtils;
 import imt.imtmde.Adresse;
 import imt.imtmde.Club;
@@ -16,6 +14,7 @@ import imt.imtmde.ImtmdeFactory;
 import imt.imtmde.Match;
 import imt.imtmde.Resultat;
 import imt.imtmde.Tireur;
+import imt.imtmde.TypeArme;
 import imt.imtmde.TypeCategorie;
 import imt.imtmde.TypeSexe;
 
@@ -76,7 +75,10 @@ public class CompetionCLI {
 		do {
 			MenuView.printMatchs(matchs);
 			choice = InputUtils.inputInt(null);
-			if (choice == 1) this.creerMatch(competition);
+			if (choice == 1) {
+				Ansi.printTitle("Creer un match");
+				this.creerMatch(competition);
+			}
 			else if (choice - 2 < matchs.size() && choice - 2 >= 0) this.detailsMatch(competition, matchs.get(choice-2));
 			else if (choice != 0) Ansi.printError("Option non correct");
 		} while (choice != 0);
@@ -161,20 +163,137 @@ public class CompetionCLI {
 	}
 
 	private void creerMatch(Competition competition) {
-		throw new java.lang.UnsupportedOperationException("Methode not implemented (creerMatch)");		
+		TypeArme arme = InputUtils.inputArme();
+		TypeCategorie categ = InputUtils.inputCategorie();
+		TypeSexe sexe = InputUtils.inputSexe();
+		
+		Match match = competitionFactory.createMatch();
+		match.setArme(arme);
+		match.setCategorie(categ);
+		match.setSexe(sexe);
+		
+		Tireur tireur = this.selectionTireur(competition, arme, categ, sexe);
+		match.getTireurs().add(tireur);
+		tireur = this.selectionTireur(competition, arme, categ, sexe);
+		match.getTireurs().add(tireur);
+		
+		competition.getMatch().add(match);
+	}
+
+	private Tireur selectionTireur(Competition competition, TypeArme arme, TypeCategorie categ, TypeSexe sexe) {
+		List<? extends Tireur> tireurs;
+		
+		int choice = -1;	
+		do {
+			switch (arme) {
+				case SABRE -> tireurs = Getters.getAllSabreur(competition);
+				case EPEE -> tireurs = Getters.getAllEpeiste(competition);
+				default -> tireurs = Getters.getAllFleurettiste(competition);
+			}
+			tireurs = Getters.filterCateg(tireurs, categ);
+			tireurs = Getters.filterSexe(tireurs, sexe);
+			MenuView.printListTireur(tireurs);
+			choice = InputUtils.inputInt(null);
+			if (choice >= 0 && choice < tireurs.size()) return tireurs.get(choice);
+			else if (choice == tireurs.size()) this.creerTireur(competition);
+			else Ansi.printError("Option non correct");
+		} while (true);
+	}
+
+	private void creerTireur(Competition competition) {
+		List<Club> clubs = competition.getClub();
+		Club choixClub;
+		int choice = -1;	
+		do {
+			MenuView.printListClub(clubs);
+			choice = InputUtils.inputInt("A quel club est ratach� le tireur ?");
+			if (choice >= 0 && choice < clubs.size()) {
+				choixClub = clubs.get(choice);
+				break;
+			}
+			else if (choice == clubs.size()) this.creerClub(competition);
+			else Ansi.printError("Option non correct");
+		} while (true);
+		
+		this.creerTireur(competition, choixClub);
+	}
+
+	private void creerTireur(Competition competition, Club club) {
+		TypeArme arme = InputUtils.inputArme();
+		Tireur tireur;
+		switch (arme) {
+			case EPEE -> tireur = competitionFactory.createEpeiste();
+			case SABRE -> tireur = competitionFactory.createSabreur();
+			default -> tireur = competitionFactory.createFleurettiste();
+		}
+		
+		String nom = InputUtils.inputString("Nom ?");
+		String prenom = InputUtils.inputString("Prenom ?");
+		TypeCategorie categ = InputUtils.inputCategorie();
+		TypeSexe sexe = InputUtils.inputSexeHumain();
+		
+		tireur.setNom(nom);
+		tireur.setPrenom(prenom);
+		tireur.setCategorie(categ);
+		tireur.setSexe(sexe);
+		
+		club.getTireur().add(tireur);
+	}
+	
+	private void creerClub(Competition competition) {
+		Ansi.printTitle("Creation d'un club");
+		String nom = InputUtils.inputString("Nom du club ?");
+		Adresse adr = createAdresse();
+		
+		Club club = competitionFactory.createClub();
+		club.setNom(nom);
+		club.setAdresse(adr);
+		competition.getClub().add(club);
 	}
 
 	private void afficherClubs(Competition competition) {
-		EList<Club> club = competition.getClub();
-		throw new java.lang.UnsupportedOperationException("Methode not implemented (afficherClubs)");		
+		List<Club> clubs = competition.getClub();
+		
+		int choice = -1;	
+		do {
+			MenuView.printClubs(clubs);
+			choice = InputUtils.inputInt(null);
+			if (choice-2 >= 0 && choice-2 < clubs.size()) this.afficherClub(competition, clubs.get(choice-2));
+			else if (choice == 1) this.creerClub(competition);
+			else if (choice != 0) Ansi.printError("Option non correct");
+		} while (choice != 0);
 	}
 	
-	
+	private void afficherClub(Competition competition, Club club) {
+		int choice = -1;	
+		do {
+			MenuView.printClubInfo(club);
+			choice = InputUtils.inputInt(null);
+			if (choice == 1) this.afficherTireurs(competition, club);
+			else if (choice != 0) Ansi.printError("Option non correct");
+		} while (choice != 0);
+	}
+
+	private void afficherTireurs(Competition competition, Club club) {
+		List<Tireur> tireurs = club.getTireur();
+		int choice = -1;	
+		do {
+			MenuView.printMenuTireurs(tireurs);
+			choice = InputUtils.inputInt(null);
+			if (choice-2 >= 0 && choice-2 < tireurs.size()) this.afficherTireur(competition, tireurs.get(choice-2));
+			else if (choice == 1) {
+				Ansi.printTitle("Creer un tireur");
+				this.creerTireur(competition, club);
+			}
+			else if (choice != 0) Ansi.printError("Option non correct");
+		} while (choice != 0);
+	}
+
 	private void createCompetion() {
-		Ansi.printTitle("Création d'une compétition");
+		Ansi.printTitle("Creation d'une competition");
 		
 		String nom = InputUtils.inputString("Nom ?");
-		Adresse adresse = selectAdress();
+		Adresse adresse = createAdresse();
 		
 		Competition competition = competitionFactory.createCompetition();
 		competition.setAdresse(adresse);
@@ -183,7 +302,7 @@ public class CompetionCLI {
 		resource.ajoutCompetion(competition);
 	}
 
-	private Adresse selectAdress() {
+	private Adresse createAdresse() {
 		Adresse adr = competitionFactory.createAdresse();
 		String adrPostale = InputUtils.inputString("Adresse postale ?");
 		int codePostal = InputUtils.inputInt("Code postal ?");

@@ -89,7 +89,7 @@ public class InputUtils {
 		boolean stop = false;
 		Scanner sc = new Scanner(inputStream);
 		while (true) {
-			Ansi.printQuestion("Choix du catégorie :");
+			Ansi.printQuestion("Choix de la cat�gorie :");
 			int count = TypeCategorie.values().length;
 			for  (int i = 0; i < count; i++) {
 				Ansi.printDefault(i + ") " + TypeCategorie.get(i));
@@ -174,7 +174,7 @@ public class InputUtils {
 		boolean stop = false;
 		Scanner sc = new Scanner(inputStream);
 		while (true) {
-			Ansi.printQuestion("Choix du catégorie :");
+			Ansi.printQuestion("Choix de la categorie :");
 			int count = TypeCategorie.values().length;
 			Ansi.printDefault("0) Conserver");
 
