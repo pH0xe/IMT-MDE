@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="imtmde" nsURI="http://www.example.org/imtmde" nsPrefix="imtmde">
   <eClassifiers xsi:type="ecore:EClass" name="Adresse">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adressePostal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adressePostale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="codePostal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ville" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -10,7 +10,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="club" upperBound="-1" eType="#//Club"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="adresse" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adresse" lowerBound="1"
         eType="#//Adresse" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="match" upperBound="-1"
         eType="#//Match" containment="true"/>
@@ -19,7 +19,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tireur" upperBound="-1"
         eType="#//Tireur" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="adresse" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adresse" lowerBound="1"
         eType="#//Adresse" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Match">

@@ -8,7 +8,7 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>imtmde.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Imtmde" basePackage="imt-mde" disposableProviderFactory="true"
+  <genPackages prefix="Imtmde" basePackage="imt" disposableProviderFactory="true"
       ecorePackage="imtmde.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="imtmde.ecore#//TypeArme">
       <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeArme/FLEURET"/>
@@ -26,7 +26,7 @@
       <genEnumLiterals ecoreEnumLiteral="imtmde.ecore#//TypeCategorie/SENIOR"/>
     </genEnums>
     <genClasses ecoreClass="imtmde.ecore#//Adresse">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/adressePostal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/adressePostale"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/codePostal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute imtmde.ecore#//Adresse/ville"/>
     </genClasses>
