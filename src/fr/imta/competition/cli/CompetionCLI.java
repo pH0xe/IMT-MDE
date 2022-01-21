@@ -186,9 +186,15 @@ public class CompetionCLI {
 		int choice = -1;	
 		do {
 			switch (arme) {
-				case SABRE -> tireurs = Getters.getAllSabreur(competition);
-				case EPEE -> tireurs = Getters.getAllEpeiste(competition);
-				default -> tireurs = Getters.getAllFleurettiste(competition);
+				case SABRE:
+					tireurs = Getters.getAllSabreur(competition);
+					break;
+				case EPEE:
+					tireurs = Getters.getAllEpeiste(competition);
+					break;
+				default:
+					tireurs = Getters.getAllFleurettiste(competition);
+					break;
 			}
 			tireurs = Getters.filterCateg(tireurs, categ);
 			tireurs = Getters.filterSexe(tireurs, sexe);
@@ -206,7 +212,7 @@ public class CompetionCLI {
 		int choice = -1;	
 		do {
 			MenuView.printListClub(clubs);
-			choice = InputUtils.inputInt("A quel club est rataché le tireur ?");
+			choice = InputUtils.inputInt("A quel club est ratachï¿½ le tireur ?");
 			if (choice >= 0 && choice < clubs.size()) {
 				choixClub = clubs.get(choice);
 				break;
@@ -222,9 +228,15 @@ public class CompetionCLI {
 		TypeArme arme = InputUtils.inputArme();
 		Tireur tireur;
 		switch (arme) {
-			case EPEE -> tireur = competitionFactory.createEpeiste();
-			case SABRE -> tireur = competitionFactory.createSabreur();
-			default -> tireur = competitionFactory.createFleurettiste();
+			case EPEE:
+				tireur = competitionFactory.createEpeiste();
+				break;
+			case SABRE: 
+				tireur = competitionFactory.createSabreur();
+				break;
+			default:
+				tireur = competitionFactory.createFleurettiste();
+				break;
 		}
 		
 		String nom = InputUtils.inputString("Nom ?");
