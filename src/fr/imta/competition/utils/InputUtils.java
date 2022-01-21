@@ -139,7 +139,7 @@ public class InputUtils {
 			try {
 				res = Integer.parseInt(sc.nextLine());
 				if (res == 0) return null;
-				if (res < count && res >= 0)
+				if (res <= count && res >= 0)
 					return TypeSexe.get(res-1);
 			} catch (Exception e) {
 				Ansi.printError("Saisir un choix valide");
@@ -184,7 +184,7 @@ public class InputUtils {
 			try {
 				res = Integer.parseInt(sc.nextLine());
 				if (res == 0) return null;
-				if (res < count && res >= 0)
+				if (res <= count && res >= 0)
 					return TypeCategorie.get(res-1);
 			} catch (Exception e) {
 				Ansi.printError("Saisir un choix valide");
@@ -206,7 +206,7 @@ public class InputUtils {
 			try {
 				res = Integer.parseInt(sc.nextLine());
 				if (res == 0) return null;
-				if (res < count && res >= 0)
+				if (res <= count && res >= 0)
 					return TypeArme.get(res-1);
 			} catch (Exception e) {
 				Ansi.printError("Saisir un choix valide");

@@ -14,23 +14,18 @@ public class Main {
 		ResourceUtils resource = new ResourceUtils();
 		if (args.length == 0) {
 			String path = "./xmi/" + getDateFormatted(new Date()) + ".xmi";
-			Ansi.printYellow("Création de : " + path);
+			Ansi.printYellow("Creation de : " + path);
 			resource.creerRessource(path);
 		} else {
 			Ansi.printYellow("Chargement de : " + args[0]);
 			resource.chargerModele(args[0]);
 		}
 		
-		if (args.length > 1 && args[1].equals("API")) {
-			throw new UnsupportedOperationException("API not yet implemented");
-		} else {
-			CompetionCLI.run(resource);
-		}
-		
+		CompetionCLI.run(resource);
 		
 		try {
 			resource.sauvegarderResource();
-			Ansi.printGreen("Modele sauvegard� avec succ�s");
+			Ansi.printGreen("Modele sauvegarde avec succes");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
