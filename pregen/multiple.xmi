@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:imtmde="http://www.example.org/imtmde">
+  <imtmde:Competition nom="CEP">
+    <club nom="Paris, CEP">
+      <tireur xsi:type="imtmde:Fleurettiste" nom="Tarre" prenom="Lucie" categorie="M20" match="/0/@match.0"/>
+      <adresse adressePostale="13 rue Caillaux" codePostal="75013" ville="Paris"/>
+    </club>
+    <club nom="Cercle d'escrime de Moirans">
+      <tireur xsi:type="imtmde:Fleurettiste" nom="Dubourg" prenom="Thais" categorie="M20" match="/0/@match.0"/>
+      <tireur xsi:type="imtmde:Fleurettiste" nom="Retif" prenom="Guenaelle" categorie="M20"/>
+      <adresse adressePostale="Espace Lionnel Terray" codePostal="38430" ville="Moirans"/>
+    </club>
+    <adresse adressePostale="Halle Carpentier, 81 Boulevard Massena" codePostal="75013" ville="Paris"/>
+    <match categorie="M20" tireurs="/0/@club.1/@tireur.0 /0/@club.0/@tireur.0">
+      <resultat score="Dubourg Thais 2 - Tarre Lucie 5" temps="120"/>
+    </match>
+  </imtmde:Competition>
+  <imtmde:Competition nom="Tournois international de la ville d'Annonay">
+    <club nom="Cercle d'escrime de moirans">
+      <tireur xsi:type="imtmde:Fleurettiste" nom="Reig" prenom="Julien" categorie="SENIOR" sexe="HOMME" match="/1/@match.0"/>
+      <tireur xsi:type="imtmde:Fleurettiste" nom="Gasdeblay" prenom="Flavien" categorie="SENIOR" sexe="HOMME" match="/1/@match.0"/>
+      <adresse adressePostale="Espace Lionnel Terray" codePostal="38430" ville="Moirans"/>
+    </club>
+    <adresse adressePostale="Rue J. Prevert" codePostal="7100" ville="Annonay"/>
+    <match sexe="MIXTE" categorie="SENIOR" tireurs="/1/@club.0/@tireur.0 /1/@club.0/@tireur.1"/>
+  </imtmde:Competition>
+</xmi:XMI>

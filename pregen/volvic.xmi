@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<imtmde:Competition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:imtmde="http://www.example.org/imtmde" nom="Open de Volvic">
+  <club nom="Cercle d'escrime de Moirans">
+    <tireur xsi:type="imtmde:Fleurettiste" nom="Reig" prenom="Julien" categorie="SENIOR" sexe="HOMME" match="//@match.0"/>
+    <tireur xsi:type="imtmde:Fleurettiste" nom="Fosses" prenom="Theodora" categorie="SENIOR" match="//@match.1"/>
+    <tireur xsi:type="imtmde:Fleurettiste" nom="Gasdeblay" prenom="Flavien" categorie="M20" sexe="HOMME"/>
+    <adresse adressePostale="Espace Lionel Terray" codePostal="38430" ville="Moirans"/>
+  </club>
+  <club nom="Grenoble Universtite Club">
+    <tireur xsi:type="imtmde:Fleurettiste" nom="Tatou" prenom="Tatiana" categorie="SENIOR" match="//@match.0 //@match.1"/>
+    <tireur xsi:type="imtmde:Fleurettiste" nom="Parmentier" prenom="Marc" categorie="SENIOR" sexe="HOMME"/>
+    <adresse adressePostale="7 Rue Francois Raoult" codePostal="38000" ville="Grenoble"/>
+  </club>
+  <adresse adressePostale="29 route de Marsat" codePostal="63200" ville="Volvic"/>
+  <match sexe="MIXTE" categorie="SENIOR" tireurs="//@club.0/@tireur.0 //@club.1/@tireur.0"/>
+  <match categorie="SENIOR" tireurs="//@club.0/@tireur.1 //@club.1/@tireur.0">
+    <resultat score="Fosses Theodora 5 - Tatou Tatiana 1" temps="380"/>
+  </match>
+</imtmde:Competition>

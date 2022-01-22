@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<imtmde:Competition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:imtmde="http://www.example.org/imtmde" nom="Tournois des rous">
-  <club nom="CEM">
-    <tireur xsi:type="imtmde:Fleurettiste" nom="Reig" prenom="Julien" categorie="SENIOR" sexe="HOMME"/>
-    <adresse adressePostale="32 Rue rogee du marais" codePostal="38420" ville="Moirans"/>
-  </club>
-  <adresse adressePostale="la bas" codePostal="38430" ville="Moirans"/>
-</imtmde:Competition>
