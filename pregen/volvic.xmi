@@ -3,7 +3,7 @@
   <club nom="Cercle d'escrime de Moirans">
     <tireur xsi:type="imtmde:Fleurettiste" nom="Reig" prenom="Julien" categorie="SENIOR" sexe="HOMME" match="//@match.0"/>
     <tireur xsi:type="imtmde:Fleurettiste" nom="Fosses" prenom="Theodora" categorie="SENIOR" match="//@match.1"/>
-    <tireur xsi:type="imtmde:Fleurettiste" nom="Gasdeblay" prenom="Flavien" categorie="M20" sexe="HOMME"/>
+    <tireur xsi:type="imtmde:Fleurettiste" nom="Gasdeblay" prenom="Flavien" categorie="SENIOR" sexe="HOMME"/>
     <adresse adressePostale="Espace Lionel Terray" codePostal="38430" ville="Moirans"/>
   </club>
   <club nom="Grenoble Universtite Club">
